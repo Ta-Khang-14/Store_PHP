@@ -22,7 +22,7 @@
                             <p>'.$item['quantity'].' x '.$item['price'].'₫</p>
                         </div>
                         <a
-                            href="#"
+                            href="../Cart/deleteCart.php?idProduct='.$item['idProduct'].'&idCart='.$item['idCart'].'"
                             class="position-absolute delete"
                         >
                             <span

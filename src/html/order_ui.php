@@ -18,11 +18,11 @@
 <html lang="en">
 <?php include('header_store.php')?>
     <body>
-        <?php include("navbar.php");  var_dump($address);?>
+        <?php include("navbar.php"); ?>
         <form class="container pt-5 my-4" method="#" action="#">
             <h1 class="h3">Chọn địa chỉ</h1>
             <select type="text" required name="idAddress" class="form-control" id="form-select-1" placeholder="#">
-                <option value="0">Chọn địa chỉ của bạn</option>
+                <option value="">Chọn địa chỉ của bạn</option>
                 <?php
                     foreach($address as $item) {
                         $detail = $item['name'].'-'.$item['phone'].'-'.$item['home'].'-'.$item['district'].'-'.$item['province'].'-'.$item['city'];

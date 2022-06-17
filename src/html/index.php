@@ -183,14 +183,14 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="">
+                                                        <a href="./detail_product_ui.php?id='.$item['id'].'">
                                                             <span
                                                                 class="lnr lnr-eye"
                                                             ></span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="">
+                                                        <a href="'.'favorite_product.php?id='.$item['id'].'">
                                                             <span
                                                                 class="lnr lnr-heart"
                                                             ></span>
@@ -256,14 +256,14 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="detail_product_ui.php?id='.$b['id'].'">
                                                     <span
                                                         class="lnr lnr-eye"
                                                     ></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="'.'favorite_product.php?id='.$item['id'].'">
                                                     <span
                                                         class="lnr lnr-heart"
                                                     ></span>

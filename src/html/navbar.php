@@ -22,7 +22,7 @@
             
         ?>
         <!-- HEADER -->
-        <div class="header position-sticky">
+        <div class="header position-sticky mb-2">
             <div class="container nav-custom">
                 <div
                     class="nav nav-sticky d-flex justify-content-between align-items-center"
@@ -39,13 +39,14 @@
 
                     <!-- NAVBAR SEARCH -->
                     <div class="navbar-search">
-                        <form action="" class="d-flex position-relative">
+                        <form action="findProduct_ui.php" class="d-flex position-relative">
                             <input
                                 class="form-control"
                                 type="search"
                                 placeholder="Tìm kiếm..."
                                 aria-label="Search"
                                 id="search-input"
+                                name="key"
                             />
 
                             <input
@@ -63,7 +64,7 @@
                             class="navbar-user-content d-flex align-items-center"
                         >
                             <a
-                                href="#"
+                                href="favorite_product.php"
                                 class="nav-favorite-product white-letter position-relative"
                             >
                                 <i class="fa-solid fa-heart nav-icon"></i>

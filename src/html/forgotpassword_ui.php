@@ -1,11 +1,14 @@
 <?php
-    include ("../Auth/login.php");
+    include ("../Auth/forgotPassword.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <?php include("./header_store.php")?>
-    <?php 
+    <body>
+        <!-- HEADER -->
+        <?php include('./navbar.php')?>
+        <?php 
             if(!empty($_SESSION['alert'])) {
                 $message = $_SESSION['alert'];
                 echo "
@@ -14,19 +17,15 @@
                     </script>";
                 $_SESSION['alert'] = '';
             }
-    ?>
-    <body>
-        <!-- HEADER -->
-        <?php include('./navbar.php')?>
-
+        ?>
         <div class="gray-bg">
             <form
                 class="login form-log active"
                 method="POST"
                 enctype="multipart/form-data"
+                active
             >
-                <h3 class="text-center">Đăng nhập</h3>
-                <p>Đăng nhập tài khoản của bạn</p>
+                <h3 class="text-center">Đặt lại mật khẩu</h3>
                 <input
                     required
                     type="email"
@@ -44,8 +43,14 @@
                     placeholder="Password"
                     class="my-2 p-2 input-text"
                 />
-                <br />
-
+                <input
+                    required
+                    type="password"
+                    name="confirmPassword"
+                    id="2"
+                    placeholder="Confirm password"
+                    class="my-2 p-2 input-text"
+                />
                 <?php 
                     if(!empty($error) ) {
                         echo '
@@ -55,13 +60,11 @@
                     }
                 ?> 
                 <br />
-                <a href="forgotpassword_ui.php" class="my-2"> Quên mật khẩu?</a>
-                <br />
 
                 <input
                     required
                     type="submit"
-                    value="Đăng nhập"
+                    value="Đặt lại mật khẩu"
                     class="btn btn-danger my-2 mt-3"
                 />
                 <a href="register_ui.php" class="my-2 mt-3 dangki"> Đăng kí</a>
@@ -143,6 +146,7 @@
                                     class="form-control"
                                     id="footer-submit-email"
                                 />
+
                             </form>
                             <div class="facebook-contact">
                                 <a href="#">

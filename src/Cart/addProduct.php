@@ -57,6 +57,7 @@
         header("Location: ../html/$url");
 
     } else {
+        $_SESSION["alert"] = "Bạn cần đăng nhập!";
         header("Location: ../html/index.php");
     }
 ?>

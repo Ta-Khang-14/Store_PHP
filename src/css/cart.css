@@ -1,0 +1,65 @@
+.head {
+    background-color: var(--gray-bg);
+    padding: 20px 0px;
+}
+.head span,
+.head a {
+    font-size: 14px;
+}
+.main-wrapper {
+    padding: 40px 0px;
+}
+.table-product {
+    width: 100%;
+}
+.table-title {
+    background-color: var(--gray-bg);
+}
+thead th {
+    text-align: center;
+}
+.table-title th {
+    padding: 20px 10px;
+}
+.item-infor img {
+    width: 100px;
+    height: 100px;
+}
+.x {
+    margin: 0px 10px;
+    text-align: left;
+}
+.table-item .product-count {
+    max-width: 95px;
+    margin: auto;
+}
+.table-item {
+    text-align: center;
+}
+.table-item p {
+    margin: auto;
+}
+.total-money .btn-danger {
+    padding: 10px 15px;
+}
+.total-money .total {
+    background-color: var(--gray-bg);
+}
+.total-money .total h3 {
+    font-weight: 700;
+    font-size: 24px;
+}
+.table-product.mobile {
+    display: none;
+}
+.table-product.mobile img {
+    display: none;
+}
+.table-product.mobile th {
+    text-align: left;
+}
+.table-product.mobile th,
+.table-product.mobile td {
+    padding: 10px;
+    border: 1px solid var(--gay-border);
+}

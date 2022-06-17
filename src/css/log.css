@@ -1,0 +1,30 @@
+/* --------------------FORM LOG---------------- */
+.form-log {
+    display: none;
+    max-width: 430px;
+    width: 100%;
+    background-color: white;
+    margin: auto;
+    padding: 20px 25px;
+}
+.gray-bg {
+    background-color: var(--gray-bg);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.input-text {
+    width: 100%;
+    outline: none;
+}
+.form-log p {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+.form-log.active {
+    display: block;
+}
+.dangki {
+    float: right;
+    line-height: 38px;
+}

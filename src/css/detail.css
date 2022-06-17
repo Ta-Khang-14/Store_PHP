@@ -1,0 +1,100 @@
+.tag-item {
+    font-size: 14px;
+}
+.current-tag {
+    color: black !important;
+}
+.gray-bg {
+    background-color: var(--gray-bg);
+    padding-top: 20px;
+}
+.tag {
+    margin-bottom: 20px;
+}
+.froduct-infor {
+}
+.froduct-infor-img img {
+    max-width: 500px;
+    max-height: 500px;
+    width: 100%;
+}
+.froduct-infor-wrapper {
+    background-color: white;
+}
+
+.product-infor-country .item-star {
+    line-height: 28px;
+}
+.product-info-title {
+    font-size: 22px;
+    font-weight: 400;
+}
+.product-infor-price {
+    font-weight: 700;
+    font-size: 20px;
+}
+.product-count {
+    height: 38px;
+}
+.label {
+    top: -25px;
+    left: 0;
+}
+.product-count i {
+    color: var(--gray-color);
+}
+.contact li {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+.contact li a {
+    color: white;
+}
+#facebook {
+    background-color: var(--facebook);
+}
+#twitter {
+    background-color: var(--twitter);
+}
+#ggpls {
+    background-color: var(--ggpls);
+}
+#linkedin {
+    background-color: var(--linkedin);
+}
+.sub-img img {
+    width: 90px;
+    height: 90px;
+    opacity: 0.7;
+    transition: all 0.2s linear;
+}
+.sub-img.active img {
+    opacity: 1;
+}
+.froduct-infor .main-option-title {
+    padding: 0px 15px;
+}
+.product-description-wrapper {
+    background-color: white;
+    padding: 30px 20px;
+}
+.product-description-wrapper ul {
+    height: 50px;
+}
+.product-description-wrapper li {
+    line-height: 50px;
+    color: var(--gray-color);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.product-description-wrapper li.active {
+    color: var(--black-color-1);
+}
+.product-description-content {
+    display: none;
+}
+.product-description-content.active {
+    display: block;
+}

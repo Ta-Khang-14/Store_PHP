@@ -30,34 +30,27 @@
                                                         echo "
                                                         <tr>
                                                             <th style='text-align: start;' scope='col'>
-                                                                <a href='#' id='admin-btn'>
-                                                                        Quản lý
-                                                                </a>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th style='text-align: start;' scope='col'>
-                                                                <a href='#'>
+                                                                <a href='#' class='doimatkhau'>
                                                                     Đổi mật khẩu
                                                                 </a>
                                                             </th>
                                                         </tr>
                                                         <tr>
                                                             <th style='text-align: start;' scope='col'>
-                                                                <a href='#'>
+                                                                <a href='../Auth/logout.php'>
                                                                     Đăng xuất
                                                                 </a>
                                                             </th>
                                                         </tr>
                                                         ";
                                                     }
-                                                ?>
+                                                ?> 
                                                 <?php
                                                     if(isset($_SESSION['infor']) && $_SESSION['infor']['role'] == "user" ) {
                                                         echo "
                                                         <tr>
                                                             <th style='text-align: start;' scope='col'>
-                                                                <a href='#' id='xemdonhang'>
+                                                                <a href='#' class='xemdonhang'>
                                                                     Xem đơn hàng
                                                                 </a>
                                                             </th>
@@ -77,7 +70,7 @@
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th style='text-align: start;' scope='col' id='doimatkhau'>
+                                                            <th style='text-align: start;' scope='col' class='doimatkhau'>
                                                                 <a href='#'>
                                                                     Đổi mật khẩu
                                                                 </a>
@@ -101,18 +94,53 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-10 col-md-12" id="main">
+                <?php 
+                    if(isset($_SESSION['infor']) && $_SESSION['infor']['role'] == "admin" ) {
+                        echo'
+                            <div class="col-xl-12">
+                                <div class="row" id="admin-manage">
+                        ';
+                    } else {
+                        echo '
+                            <div class="col-xl-10 col-md-12">
+                                <div class="row" id="admin-manage">
+                        ';
+                    }
+
+                ?>
+
+                        <?php include_once('admin_manage_ui.php');?>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12" id="main"></div>
+                    </div>
 
                 </div>                               
                 <script>
                     $("document").ready(() => {
 
-                        $('#xemdonhang').on("click", (e) => {
-                            $('#main').load("manage_order_ui.php");    
+                        $('.xemdonhang').on("click", (e) => {
+                            $('#main').load("manage_order_ui.php", () => {
+                                $('.page-link').on("click", (e) => {
+                                    e.preventDefault();
+                                })
+                               $('a[class^="page-link"]:not(.unActive)').on("click", function(e) {
+                                    $('#main').load("manage_order_ui.php?prev="+$(this).data("page"));
+                               })
+                            });    
                         })
                         $('#themdiachi').on("click", (e) => {
                             $('#main').load("address_ui.php");    
                         })
+                        
+                        $('#manage-product').on("click", (e) => {
+                            $('#main').load("manage_product_ui.php");    
+                        })
+
+                        $('#manage-user').on("click", (e) => {
+                            $('#main').load("manage_user_ui.php");    
+                        })
+
                         $('#danhsachdiachi').on('click', (e) => {
                             $('#main').load("list_address_ui.php",() => {
 
@@ -126,9 +154,11 @@
                             });
                         })
                         
-                        $('#doimatkhau').on('click', (e) => {
+                        $('.doimatkhau').on('click', (e) => {
                             $('#main').load("change_password_ui.php");
                         })
+
+                        
                     })
                 </script>
             </div>

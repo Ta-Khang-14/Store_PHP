@@ -564,3 +564,6 @@
     max-width: 200px;
     max-height: 150px;
 } */
+.card-body {
+    min-height: 70px;
+}

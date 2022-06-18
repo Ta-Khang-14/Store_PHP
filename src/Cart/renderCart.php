@@ -16,7 +16,7 @@
                             style="max-width: 120px; max-height: 120px;"
                         />
                         <div class="detail">
-                            <a href="product-detail.html">
+                            <a href="detail_product_ui.php?id='.$item['id'].'">
                             '.$item['name'].'
                             </a>
                             <p>'.$item['quantity'].' x '.$item['price'].'₫</p>

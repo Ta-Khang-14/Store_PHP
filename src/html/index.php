@@ -199,7 +199,7 @@
                                                 </ul>
                                             </div>
                                             <div class="list-product-detail">
-                                                <a href="product-detail.php?id='.$item['id'].'"
+                                                <a href="detail_product_ui.php?id='.$item['id'].'"
                                                     >'.$item['name'].'</a
                                                 >
                                                 <br />
@@ -272,7 +272,7 @@
                                         </ul>
                                     </div>
                                     <div class="list-product-detail">
-                                        <a href="product-detail.php?id='.$b['id'].'"
+                                        <a href="detail_product_ui.php?id='.$b['id'].'"
                                             >'.$b['name'].'</a
                                         >
                                         <br />

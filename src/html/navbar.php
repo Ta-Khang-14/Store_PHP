@@ -68,7 +68,11 @@
                                 class="nav-favorite-product white-letter position-relative"
                             >
                                 <i class="fa-solid fa-heart nav-icon"></i>
-                                <span class="sub-num position-absolute">0</span>
+                                <?php 
+                                    $countFavorite = isset($_SESSION['id']) ? count($_SESSION['id']) : 0;
+
+                                ?>
+                                <span class="sub-num position-absolute"><?= $countFavorite ?></span>
                             </a>
                             <div class="nav-user-cart position-relative">
                                 <a href="cart_ui.php" class="white-letter">

@@ -176,7 +176,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="'.'product-detail?id='.$item['id'].'">
+                                                        <a href="'.'detail_product_ui.php?id='.$item['id'].'">
                                                             <span
                                                                 class="lnr lnr-eye"
                                                             ></span>
@@ -194,7 +194,7 @@
                                             <div
                                                 class="list-product-detail position-relative"
                                             >
-                                                <a href="'.'product-detail?id='.$item['id'].'"
+                                                <a href="'.'detail_product_ui.php?id='.$item['id'].'"
                                                     >'.$item['name'].'</a
                                                 >
                                                 <br />

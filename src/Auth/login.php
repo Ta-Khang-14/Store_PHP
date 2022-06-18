@@ -24,12 +24,15 @@
         }
 
         if(empty($error)) {
-            $sql = "SELECT name, role, email FROM account WHERE email = '$email' AND password = '$password' ";
+            $sql = "SELECT name, role, email, isActive FROM account WHERE email = '$email' AND password = '$password' ";
             $result = executeResult($sql);
-
             if(!empty($result)) {
-                $_SESSION['infor'] = $result[0];
-                header('Location: ../html/index.php ');
+                if($result[0]['isActive'] == 1) {
+                    $_SESSION['infor'] = $result[0];
+                    header('Location: ../html/index.php ');
+                } else {
+                    $_SESSION['alert'] = "Tài khoản của bạn đã bị khóa";
+                }
             } else {
                 $error['message'] = "Tên đăng nhập hoặc mật khẩu không chính xác.";
             }

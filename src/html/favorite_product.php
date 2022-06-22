@@ -1,24 +1,43 @@
 <?php 
     session_start();
-    if(!empty($_GET['id'])) {
-        if(isset($_SESSION['id'])) {
-            if(in_array($_GET['id'],$_SESSION['id'])) {
-                $_SESSION['alert'] = "Thêm sản phẩm yêu thích thất bại. Sản phẩm đã được thêm trước đó!";
-            } else {
-                array_push($_SESSION['id'],$_GET['id']);
-                $_SESSION['alert'] = "Thêm sản phẩm yêu thích thành công!";
-            }
-
+    include_once("../MySQL/dbprocess.php");
+    if(isset($_SESSION['infor'])) {
+        $email = $_SESSION['infor']['email'];
+        if(!isset($_SESSION['infor']['id'])) {
+            $sql2 = "SELECT * FROM account WHERE email = '$email'";
+            $idUser= executeResult( $sql2)[0]['id'];
         } else {
-            $_SESSION['id'] = array($_GET['id']);
-            $_SESSION['alert'] = "Thêm sản phẩm yêu thích thành công!";
+            $idUser = $_SESSION['infor']['id'];
         }
-    }
-    if(!empty($_GET['deleteId'])) {
 
-        $deleteId = $_GET['deleteId'];
-        unset($_SESSION['id'][array_search($deleteId, $_SESSION['id'])]);
-        $_SESSION['alert'] = "Xóa sản phẩm yêu thích thành công!";
+        $list = executeResult("SELECT * FROM favorite_product WHERE idUser = $idUser");
+        $idFavorite = $list[0]['id'];
+
+        if(!empty($_GET['id'])) {
+            $idProduct = $_GET['id'];
+
+            $sql = "SELECT * FROM favorite_product_detail WHERE idFavorite=$idFavorite AND idProduct=$idProduct ";
+            $product = executeResult($sql);
+            if(!empty($product)) {
+                $_SESSION['alert'] = "Sản phẩm đã có trong danh sách yêu thích!";
+            } else {
+                $response = execute("INSERT INTO favorite_product_detail(idFavorite, idProduct) VALUES($idFavorite, $idProduct)");
+                if($response) {
+                    $_SESSION['alert'] = "Thêm sản phẩm yêu thích thành công";
+                }
+            }
+        }
+
+        if(!empty($_GET['deleteId'])) {
+
+            $deleteId = $_GET['deleteId'];
+            $response = execute("DELETE FROM favorite_product_detail WHERE idFavorite=$idFavorite AND idProduct=$deleteId");
+            if($response) {
+                $_SESSION['alert'] = "Xóa sản phẩm yêu thích thành công!";
+            }
+        }
+    } else {
+        $_SESSION['alert'] = "Bạn cần đăng nhập!";
     }
 ?>
 <html lang="en">
@@ -59,6 +78,7 @@
     </head>
     <body>
         <?php 
+        var_dump($_SESSION['alert']);
             if(!empty($_SESSION['alert'])) {
                 $message = $_SESSION['alert'];
                 echo "
@@ -101,17 +121,11 @@
                         <div class="col col-12">
                             <div class="row list-product-wrapper">
                             <?php
-                                include_once("../MySQL/dbprocess.php");
-                                $product = array();
-                                if( isset($_SESSION["id"]))
-                                {
-                                    $product = $_SESSION['id'];
-                                }
-                                
-                                foreach($product as $id) {
-                                    $item = executeResult("SELECT * FROM product WHERE id='$id'")[0];
-
-                                    $imgs =array($item['imgs']);
+                                $query = "SELECT idUser, isDeleted, product.id, product.price, product.imgs, product.name FROM product INNER JOIN favorite_product_detail
+                                    ON product.id = idProduct INNER JOIN favorite_product ON favorite_product.id = idFavorite WHERE idUser=$idUser AND isDeleted=0";
+                                $product = executeResult($query);
+                                foreach($product as $item) {
+                                    $imgs = $item['imgs'];
                                     $price = number_format($item['price']);
                                     echo '
                                     <div class="col col-6 list-product-item col-md-6 col-lg-3" >
@@ -121,7 +135,7 @@
                                             >
 
                                                 <img
-                                                    src="'.$imgs[0].'"
+                                                    src="'.$imgs.'"
                                                     alt=""
                                                 />
                                                 <ul
@@ -164,7 +178,7 @@
                                             </div>
                                         </div>
                                     </div>';
-                                };
+                                    }
                             ?>
                             
 

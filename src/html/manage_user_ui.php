@@ -59,7 +59,6 @@
                     </table>
                 </div>
                 <!-- end project-list -->
-                <?php include_once("../Other/pagnition.php"); ?>
             </div>
         </div>
     </div>

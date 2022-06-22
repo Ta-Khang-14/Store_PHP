@@ -19,7 +19,7 @@
                             <a href="detail_product_ui.php?id='.$item['id'].'">
                             '.$item['name'].'
                             </a>
-                            <p>'.$item['quantity'].' x '.$item['price'].'₫</p>
+                            <p>'.$item['quantity'].' x '.number_format($item['price']).'₫</p>
                         </div>
                         <a
                             href="../Cart/deleteCart.php?idProduct='.$item['idProduct'].'&idCart='.$item['idCart'].'"

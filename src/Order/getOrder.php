@@ -12,26 +12,24 @@
             $idUser = $_SESSION['infor']['id'];
         }
 
-        $next = !empty($_GET['next']) ? $_GET['next'] : 2;
-        $prev = !empty($_GET['prev']) ? $_GET['prev'] : 0;
-        $prev = $prev < 0 ? 0 : $prev;
-        $countSum = !empty($_GET['countSum']) ? $_GET['countSum'] : 0;
-        $limit = !empty($_GET['limit']) ? $_GET['limit'] : 5;
+        $next = !empty($_GET['current']) ? $_GET['current']+1 : 2;
+        $prev = !empty($_GET['current']) ? $_GET['current']-1 : 0;
+        $limit = 8;
         $offset = $prev * $limit;
         
         $getOrderQuery = '';
         if($_SESSION['infor']['role'] == 'user') {
             $getOrderQuery = "SELECT 
                 product.name,orders.city,orders.province,orders.district,orders.createdAt,orders.status, 
-                order_detail.idOrder, order_detail.id, order_detail.quantity, order_detail.price,order_detail.total 
+                order_detail.idOrder,orders.name as 'TenNgNhan', order_detail.id, order_detail.quantity, order_detail.price,order_detail.total 
                 FROM orders INNER JOIN order_detail ON orders.id = idOrder
-                INNER JOIN product ON product.id = idProduct WHERE idUser='$idUser' LIMIT $limit  OFFSET $offset" ;
+                INNER JOIN product ON product.id = idProduct WHERE idUser='$idUser'" ;
             $countQuery = "SELECT count(*) as SL FROM orders";
         } else {
             $getOrderQuery = "SELECT account.name as 'userName', product.name,orders.city,orders.province,orders.district,orders.createdAt
                 ,orders.status, order_detail.idOrder, orders.idUser, order_detail.id, order_detail.quantity, order_detail.price,
                 order_detail.total FROM orders INNER JOIN order_detail ON orders.id = idOrder 
-                INNER JOIN product ON product.id = idProduct INNER JOIN account ON account.id = idUser LIMIT $limit OFFSET $offset";
+                INNER JOIN product ON product.id = idProduct INNER JOIN account ON account.id = idUser ";
             $countQuery = "SELECT count(*) as SL FROM orders";
         }
         $product = executeResult($getOrderQuery);

@@ -49,6 +49,7 @@
                     $result = executeResult($sql1);
                     
                     $usid = $result[0]['id'];
+                    execute("INSERT INTO favorite_product(idUser) VALUES ($usid)");
                     $sql2 = "INSERT INTO cart(idUser) VALUES('$usid')";
                     $response1 =  execute($sql2);
 

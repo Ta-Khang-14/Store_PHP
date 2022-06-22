@@ -157,7 +157,7 @@
                         <div class="row list-product-wrapper">
                             <?php 
                                 include_once("../MySQL/dbprocess.php");
-                                $productQuery = "SELECT * FROM product ORDER BY createdAt DESC LIMIT 5";
+                                $productQuery = "SELECT * FROM product WHERE isDeleted=0 ORDER BY createdAt DESC LIMIT 4";
                                 $product = executeResult($productQuery);
                                 foreach($product as $item) {
                                     echo '
@@ -229,7 +229,7 @@
                         }
 
                         $productQuery = "SELECT * FROM type INNER JOIN product ON product.idType = type.id
-                            WHERE idCategory='$idCategory' LIMIT 5";
+                            WHERE idCategory='$idCategory' AND isDeleted=0 LIMIT 5";
                         $product = executeResult($productQuery);
                         $renderProduct = "";
                         foreach($product as $b) {

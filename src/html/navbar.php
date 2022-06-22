@@ -15,7 +15,8 @@
                 }
 
                 $sql = "SELECT count(*) as SL FROM account INNER JOIN cart ON account.id = cart.idUser
-                    INNER JOIN cart_detail ON cart.id = cart_detail.idCart WHERE idUser='$idUser'";
+                    INNER JOIN cart_detail ON cart.id = cart_detail.idCart INNER JOIN product
+                    ON product.id = cart_detail.idProduct WHERE idUser='$idUser' AND isDeleted=0";
                 $countProduct += executeResult($sql)[0]['SL'];
             }
             
@@ -63,14 +64,21 @@
                         <div
                             class="navbar-user-content d-flex align-items-center"
                         >
+                        <?php
+                            if(!isset($_SESSION['infor']) or $_SESSION['infor']['role'] == "user") {
+                        ?>
                             <a
                                 href="favorite_product.php"
                                 class="nav-favorite-product white-letter position-relative"
                             >
                                 <i class="fa-solid fa-heart nav-icon"></i>
                                 <?php 
-                                    $countFavorite = isset($_SESSION['id']) ? count($_SESSION['id']) : 0;
-
+                                    $countFavorite = 0;
+                                    if(isset($idUser)) {
+                                        $query = "SELECT count(*) as SL FROM product INNER JOIN favorite_product_detail
+                                            ON product.id = idProduct INNER JOIN favorite_product ON favorite_product.id = idFavorite WHERE idUser=$idUser AND isDeleted=0";
+                                        $countFavorite = executeResult($query)[0]['SL'];
+                                    }
                                 ?>
                                 <span class="sub-num position-absolute"><?= $countFavorite ?></span>
                             </a>
@@ -82,6 +90,9 @@
                                 </a>
                                 <span class="sub-num position-absolute"><?=$countProduct?></span>
                             </div>
+                        <?php
+                            }
+                        ?>
                             <div class="nav-login d-flex align-items-center">
                                 <div class="nav-login-icon white-letter">
                                     <i class="fa-solid fa-user nav-icon"></i>

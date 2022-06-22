@@ -3,7 +3,7 @@
 
     function getProductById() {
         $value = getGet('id');
-        $sql = "SELECT * FROM product WHERE id='$value'";
+        $sql = "SELECT * FROM product WHERE id='$value' AND isDeleted=0";
         $result = executeResult($sql);
 
         return $result;
@@ -11,7 +11,8 @@
 
     function getProductsByIdType() {
         $value = getGet('idType');
-        $sql = "SELECT product.id, product.name, description, price, imgs FROM product INNER JOIN type ON product.idType = type.id WHERE type.id='$value'";
+        $sql = "SELECT product.id, product.name, description, price, imgs FROM 
+            product INNER JOIN type ON product.idType = type.id WHERE type.id='$value' AND isDeleted=0";
         
         $subSql = '';
         if( !empty($_GET['price']) ) {
@@ -39,7 +40,7 @@
         $sql = "SELECT product.id, product.name, description, price, imgs FROM product 
             INNER JOIN type ON product.idType = type.id 
             INNER JOIN category ON type.idCategory = category.id 
-            WHERE category.id='$value'";
+            WHERE category.id='$value' AND isDeleted=0 ";
 
         $subSql = '';
         if( !empty($_GET['price']) ) {

@@ -5,7 +5,7 @@
             <div class="accordion" id="accordionPayment">
                 <!-- Credit card -->
                 <div class="accordion-item mb-3 card p-4">
-                    <form action="../Address/addAddress.php" method="post" id="collapseCC" class="accordion-collapse collapse show" data-bs-parent="#accordionPayment" style="">
+                    <form action="../Address/addAddress.php" method="post" id="collapseCC" class="accordion-collapse collapse blabla show" data-bs-parent="#accordionPayment" style="">
                         <div class="accordion-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -17,7 +17,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                     <label class="form-label">Số điện thoại</label>
-                                    <input type="text" required class="form-control" name="phone" placeholder="">
+                                    <input type="text" required class="form-control" name="phone" id="check1" placeholder="">
                                     </div>
                                 </div>
                                 
@@ -51,6 +51,9 @@
                                         <textarea type="text" class="form-control" name="note" placeholder=""></textarea>
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <p class="red-danger" style="color: red;"></p>
+                                </div>
                                 <div class="col-lg-2">
                                     <div class="mb-3">
                                         <button class="btn btn-primary w-100 mt-2" id="themmoidiachi">
@@ -65,3 +68,21 @@
             </div>
         </div>
     </div>
+<script>
+    let err = "";
+    $(".blabla").on("submit", function(e) {
+        
+        err="";
+        let numbers = /^[0-9]+$/;
+        if( !$('#check1').val().split(",").join("").match(numbers)) {
+            err = "Số điện thoại sai định dạng";
+        }
+        if(!err) {
+            $(".blabla").submit();
+        } else {
+            e.preventDefault();
+            $(".red-danger").text(err);
+        }
+        
+    })
+</script>

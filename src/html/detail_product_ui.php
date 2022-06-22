@@ -55,7 +55,7 @@
                                         <div
                                             class="product-count d-flex align-items-center position-relative py-4" style="width:90px;"
                                         >
-                                            <input type="number" name="quantity" id="quantity" value="1" class="form-control">
+                                            <input type="number" name="quantity" min="1" id="quantity" value="1" class="form-control">
                                         </div>
                                         <div class="btn btn-danger mx-2">
                                             <a href="../Cart/addProduct.php?id=<?=$product['id']?>&quantity=1&back=detail_product_ui.php?id=<?=$product['id']?>" style="color: white;" id='add-cart-link'>Thêm vào giỏ hàng</a> 

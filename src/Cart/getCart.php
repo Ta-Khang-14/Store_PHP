@@ -13,7 +13,7 @@
         $productQuery = 
             "SELECT * FROM cart INNER JOIN cart_detail ON cart.id = idCart 
                 INNER JOIN product ON idProduct = product.id
-                WHERE cart.idUser = '$idUser'";
+                WHERE cart.idUser = '$idUser' AND isDeleted=0";
         $product = executeResult($productQuery);
     }
 ?>

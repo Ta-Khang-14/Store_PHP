@@ -119,7 +119,7 @@
                     <div
                         class="main-product-option d-flex flex-wrap justify-content-between align-items-center"
                     >
-                        <p class="mb-0"><b>10</b> Sản phẩm</p>
+                        <p class="mb-0">Sản phẩm</p>
                         <div
                             class="main-product-option-filter d-flex align-items-center"
                         >
@@ -166,7 +166,7 @@
                         <div class="option-title">
                             <h4>Sản phẩm hot</h4>
                         </div>
-                        <?php include("../product/genderProduct.php"); ?>
+                        <?php include("../product/render_top_product.php"); ?>
                     </div>
                 </div>
             </div>

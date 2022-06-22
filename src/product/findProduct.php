@@ -1,7 +1,7 @@
 <?php
     include_once("../MySQL/dbprocess.php");
     $key = empty($_GET['key']) ? "" : $_GET['key'];
-    $sql = "SELECT * FROM product WHERE name LIKE '%$key%'";
+    $sql = "SELECT * FROM product WHERE name LIKE '%$key%' AND isDeleted=0";
 
     $subSql = '';
     if( !empty($_GET['price']) ) {

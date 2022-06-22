@@ -125,16 +125,35 @@
                                     e.preventDefault();
                                 })
                                $('a[class^="page-link"]:not(.unActive)').on("click", function(e) {
-                                    $('#main').load("manage_order_ui.php?prev="+$(this).data("page"));
+                                    $('#main').load("manage_order_ui.php?current="+$(this).data("page"));
+                               })
+                               $(".infor-order").on('click', function(e) {
+                                   e.preventDefault();
+                                   console.log()
+                                    $('#main').load(`order_detail.php?id=${$(this).data('id')}`);
                                })
                             });    
                         })
                         $('#themdiachi').on("click", (e) => {
                             $('#main').load("address_ui.php");    
                         })
-                        
+                        $('#report').on("click", (e) => {
+                            $('#main').load("record.php", () => {
+                                $(".filter-record").on('change', () => {
+                                    let val = $(".filter-record option:selected").val();
+                                    $('#main').load(`record.php?${val}=1`);
+                                })
+                            });    
+                        })
                         $('#manage-product').on("click", (e) => {
-                            $('#main').load("manage_product_ui.php");    
+                            $('#main').load("manage_product_ui.php", function(e) {
+                                $(".change-product").on("click", function(exp) {
+                                    $('#main').load("change_product_ui.php?id="+$(this).data('id'));
+                                })
+                                $("#addNewProduct").on("click", function(exp) {
+                                    $('#main').load("change_product_ui.php");
+                                })
+                            });    
                         })
 
                         $('#manage-user').on("click", (e) => {

@@ -106,7 +106,7 @@
                     <div
                         class="main-product-option d-flex flex-wrap justify-content-between align-items-center"
                     >
-                        <p class="mb-0"><b>10</b> Sản phẩm</p>
+                        <p class="mb-0"> Sản phẩm</p>
                         <div
                             class="main-product-option-filter d-flex align-items-center"
                         >

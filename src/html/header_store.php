@@ -30,5 +30,6 @@
         ></script>
         <script src="../js/navbar.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <title>Document</title>
 </head>

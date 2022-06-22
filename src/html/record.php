@@ -10,7 +10,7 @@
             $idUser = $_SESSION['infor']['id'];
         }
         $sub = 1;
-        $ten ="";
+        $ten ="năm";
         if( isset($_GET['day']) ) {
             $ten = "ngày";
             $day = getdate()['mday'];
